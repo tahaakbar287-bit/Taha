@@ -172,27 +172,34 @@
   }
   loadHome();
 </script>
-  <script type="module">
+<script type="module">
   import { loadData } from './firebase.js';
-  
   loadData((data)=>{
     if(!data) return;
-    console.log("Firebase data loaded:", data);
-    
-    // Ye IDs tum apni HTML me laga do jahan data show karna hai
-    if(document.getElementById('site-name')) document.getElementById('site-name').innerText = data.name || '';
-    if(document.getElementById('site-bio')) document.getElementById('site-bio').innerText = data.bio || '';
-    if(document.getElementById('about-text')) document.getElementById('about-text').innerText = data.about || '';
-    if(document.getElementById('contact-email')) document.getElementById('contact-email').innerText = data.email || '';
-    if(document.getElementById('contact-phone')) document.getElementById('contact-phone').innerText = data.phone || '';
-    
-    // Projects ke liye
-    if(document.getElementById('projects-list') && data.projects){
-      let html = "";
-      data.projects.forEach(p => {
-        html += `<div><h3>${p.title}</h3><p>${p.desc}</p></div>`;
-      });
-      document.getElementById('projects-list').innerHTML = html;
+    // Home
+    if(data.home){
+      if(document.getElementById('homeTitle')) document.getElementById('homeTitle').innerText = data.home.title;
+      if(document.getElementById('homeBacklinks')) document.getElementById('homeBacklinks').innerText = data.home.backlinks;
+      if(document.getElementById('stat1')) document.getElementById('stat1').innerText = data.home.stats?.[0]||'';
+      if(document.getElementById('stat2')) document.getElementById('stat2').innerText = data.home.stats?.[1]||'';
+      if(document.getElementById('stat3')) document.getElementById('stat3').innerText = data.home.stats?.[2]||'';
+    }
+    // Insta Profile on Home
+    if(data.insta){
+      if(document.getElementById('instaName')) document.getElementById('instaName').innerText = data.insta.name;
+      if(document.getElementById('instaUsername')) document.getElementById('instaUsername').innerText = '@'+data.insta.username;
+      if(document.getElementById('instaBio')) document.getElementById('instaBio').innerText = data.insta.bio;
+      if(document.getElementById('instaProfilePic') && data.insta.profilePic) document.getElementById('instaProfilePic').src = data.insta.profilePic;
+    }
+    // Stories
+    if(data.insta?.stories){
+      const c = document.getElementById('storyContainer');
+      if(c) c.innerHTML = data.insta.stories.map(s=>`<a href="${s.link||'#'}" class="flex flex-col items-center gap-1 min-w-[60px]"><div class="w-14 h-14 rounded-full overflow-hidden bg-white/10 border border-white/20">${s.image?`<img src="${s.image}" class="w-full h-full object-cover">`:`<div class="flex items-center justify-center w-full h-full">${s.label[0]}</div>`}</div><span class="text-[10px]">${s.label}</span></a>`).join('');
+    }
+    // Grid
+    if(data.insta?.grid){
+      const g = document.getElementById('instaGrid');
+      if(g) g.innerHTML = data.insta.grid.map(p=>`<a href="${p.link||'#'}" class="aspect-square rounded-2xl overflow-hidden bg-white/5 relative group">${p.image?`<img src="${p.image}" class="w-full h-full object-cover">`:`<div class="p-4 text-xs">${p.name}</div>`}<div class="absolute bottom-0 w-full bg-black/60 p-2 text-[10px]">${p.name}</div></a>`).join('');
     }
   });
 </script>

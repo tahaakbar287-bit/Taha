@@ -91,28 +91,16 @@
   loadBlogs();
 </script>
 
-  <script type="module">
+ <script type="module">
   import { loadData } from './firebase.js';
-  
   loadData((data)=>{
-    if(!data) return;
-    console.log("Firebase data loaded:", data);
-    
-    // Ye IDs tum apni HTML me laga do jahan data show karna hai
-    if(document.getElementById('site-name')) document.getElementById('site-name').innerText = data.name || '';
-    if(document.getElementById('site-bio')) document.getElementById('site-bio').innerText = data.bio || '';
-    if(document.getElementById('about-text')) document.getElementById('about-text').innerText = data.about || '';
-    if(document.getElementById('contact-email')) document.getElementById('contact-email').innerText = data.email || '';
-    if(document.getElementById('contact-phone')) document.getElementById('contact-phone').innerText = data.phone || '';
-    
-    // Projects ke liye
-    if(document.getElementById('projects-list') && data.projects){
-      let html = "";
-      data.projects.forEach(p => {
-        html += `<div><h3>${p.title}</h3><p>${p.desc}</p></div>`;
-      });
-      document.getElementById('projects-list').innerHTML = html;
-    }
+    if(!data?.blogs) return;
+    const con = document.getElementById('blogContainer');
+    if(con) con.innerHTML = data.blogs.map(b=>`
+      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+        ${b.mainPic?`<img src="${b.mainPic}" class="w-full h-48 object-cover">`:''}
+        <div class="p-5"><h3 class="font-bold">${b.title}</h3><p class="text-xs text-white/50 mt-2">${b.content||''}</p></div>
+      </div>`).join('');
   });
 </script>
 </body>

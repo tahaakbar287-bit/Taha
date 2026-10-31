@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Taha Akbar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #05080f;
+      color: white;
+    }
+    .glow-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(24px);
+    }
+    .neon-ring {
+      box-shadow: 0 0 0 1px rgba(10,132,255,0.3), 0 0 0 8px rgba(10,132,255,0.08), 0 0 80px rgba(10,132,255,0.4);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <nav class="flex justify-between items-center p-6 md:px-10 max-w-6xl mx-auto w-full">
+    <div class="tracking-[0.3em] text-xs text-white/60">TAHA AKBAR</div>
+    <div class="flex gap-6 text-xs text-white/60">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Work</a>
+      <a href="about.html" class="text-white border-b border-[#0A84FF]">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="flex-1 max-w-5xl mx-auto px-6 md:px-10 py-10 w-full grid md:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
+
+    <!-- Pic Card -->
+    <div class="glow-card rounded-[28px] p-8 flex flex-col items-center text-center">
+      <img id="aboutPic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" class="w-[200px] h-[200px] rounded-full object-cover neon-ring">
+      <h2 class="text-2xl font-bold mt-6">Taha Akbar</h2>
+      <p class="text-[#0A84FF] text-sm">Full Stack Developer</p>
+      <div class="mt-6 w-full text-left space-y-3 text-xs">
+        <div class="flex justify-between border-b border-white/10 pb-2">
+          <span class="text-white/40">Location</span>
+          <span>Pakistan / Remote</span>
+        </div>
+        <div class="flex justify-between border-b border-white/10 pb-2">
+          <span class="text-white/40">Experience</span>
+          <span>4+ Years</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-white/40">Status</span>
+          <span class="text-green-400">Available</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Card -->
+    <div class="glow-card rounded-[28px] p-8 md:p-10">
+      <h1 class="text-4xl font-bold">About Me</h1>
+      <p id="aboutP1" class="text-white/60 mt-6 leading-relaxed text-[15px]"></p>
+      <p id="aboutP2" class="text-white/60 mt-4 leading-relaxed text-[15px]"></p>
+
+      <div class="mt-8">
+        <h3 class="font-bold text-sm">What I Do Best</h3>
+        <ul class="mt-3 space-y-2 text-sm text-white/60">
+          <li><i class="fa-solid fa-check text-[#0A84FF] mr-2"></i>Custom Business Software & ERPs</li>
+          <li><i class="fa-solid fa-check text-[#0A84FF] mr-2"></i>3D Premium Websites</li>
+          <li><i class="fa-solid fa-check text-[#0A84FF] mr-2"></i>Backlinks & SEO Expert</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="border-t border-white/10 mt-10 bg-black/40">
+    <div class="max-w-6xl mx-auto px-6 py-6 flex justify-center">
+      <div id="footerSocials" class="flex gap-3"></div>
+    </div>
+  </footer>
+
+<script>
+  function getData() {
+    return JSON.parse(localStorage.getItem('tahaSiteDataV2') || localStorage.getItem('tahaSiteData') || 'null');
+  }
+  const data = getData();
+  if (data) {
+    if (data.about.pic) document.getElementById('aboutPic').src = data.about.pic;
+    document.getElementById('aboutP1').innerText = data.about.p1;
+    document.getElementById('aboutP2').innerText = data.about.p2;
+    const socials = data.social.links || [];
+    document.getElementById('footerSocials').innerHTML = socials.map(s => `
+      <a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+        <i class="fa-brands ${s.icon} text-xs"></i>
+      </a>
+    `).join('');
+  }
+</script>
+</body>
+</html>

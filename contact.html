@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Taha Akbar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>body{background:#05080f;color:white;font-family:sans-serif}.glow-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(20px)}</style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <nav class="flex justify-between items-center p-6 md:px-10 max-w-6xl mx-auto w-full">
+    <div class="tracking-[0.3em] text-xs text-white/60">TAHA AKBAR</div>
+    <div class="flex gap-6 text-xs text-white/60"><a href="index.html">Home</a><a href="contact.html" class="text-white border-b border-[#0A84FF]">Contact</a></div>
+  </nav>
+
+  <div class="flex-1 max-w-6xl mx-auto px-6 md:px-10 py-10 w-full grid md:grid-cols-[1fr_1fr] gap-8">
+
+    <!-- Left - Your Contact Info -->
+    <div>
+      <h1 id="contactHeading" class="text-4xl font-bold">Let's Talk</h1>
+      <p id="contactDesc" class="text-white/50 text-sm mt-3 leading-relaxed"></p>
+      
+      <div class="mt-8 space-y-3">
+        <a id="contactEmailLink" class="glow-card p-4 rounded-xl flex items-center gap-3 hover:border-[#0A84FF]/50 transition">
+          <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center"><i class="fa-solid fa-envelope text-xs"></i></div>
+          <div><p class="text-[11px] text-white/40">Email</p><p id="contactEmailText" class="text-sm"></p></div>
+        </a>
+        <a id="contactWaLink" target="_blank" class="glow-card p-4 rounded-xl flex items-center gap-3 hover:border-green-500/50 transition">
+          <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center"><i class="fa-brands fa-whatsapp text-xs"></i></div>
+          <div><p class="text-[11px] text-white/40">WhatsApp</p><p id="contactWaText" class="text-sm"></p></div>
+        </a>
+        <div class="grid grid-cols-2 gap-3">
+          <a id="contactLinkedinLink" target="_blank" class="glow-card p-4 rounded-xl flex items-center gap-2"><i class="fa-brands fa-linkedin-in text-xs"></i><span class="text-xs">LinkedIn</span></a>
+          <a id="contactFbLink" target="_blank" class="glow-card p-4 rounded-xl flex items-center gap-2"><i class="fa-brands fa-facebook-f text-xs"></i><span class="text-xs">Facebook</span></a>
+          <a id="contactInstaLink" target="_blank" class="glow-card p-4 rounded-xl flex items-center gap-2"><i class="fa-brands fa-instagram text-xs"></i><span class="text-xs">Instagram</span></a>
+          <div class="glow-card p-4 rounded-xl flex items-center gap-2"><i class="fa-solid fa-location-dot text-xs text-white/40"></i><span id="contactLocationText" class="text-xs"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right - Contact Form Builder -->
+    <div id="formContainer" class="glow-card p-6 md:p-8 rounded-[24px] h-fit">
+      <h2 class="font-bold">Send a Message</h2>
+      <div id="dynamicForm" class="mt-6 space-y-4"></div>
+      <button onclick="submitForm()" class="mt-6 w-full py-3 rounded-full bg-[#0A84FF] font-bold text-sm">Send Message</button>
+      <p class="text-[11px] text-white/30 mt-3 text-center">Form is demo — you can connect to email/WhatsApp later</p>
+    </div>
+
+  </div>
+
+<script>
+  function getData(){ return JSON.parse(localStorage.getItem('tahaSiteDataV2') || localStorage.getItem('tahaSiteData') || 'null'); }
+  const data = getData();
+  if (data && data.contact) {
+    document.getElementById('contactHeading').innerText = data.contact.heading;
+    document.getElementById('contactDesc').innerText = data.contact.desc;
+    document.getElementById('contactEmailText').innerText = data.contact.email;
+    document.getElementById('contactEmailLink').href = 'mailto:' + data.contact.email;
+    document.getElementById('contactWaText').innerText = '+' + data.contact.whatsapp;
+    document.getElementById('contactWaLink').href = 'https://wa.me/' + data.contact.whatsapp;
+    document.getElementById('contactLinkedinLink').href = data.contact.linkedin;
+    document.getElementById('contactFbLink').href = data.contact.facebook;
+    document.getElementById('contactInstaLink').href = data.contact.instagram;
+    document.getElementById('contactLocationText').innerText = data.contact.location;
+
+    // Build Form
+    if (data.contact.formEnabled) {
+      document.getElementById('dynamicForm').innerHTML = (data.contact.fields || []).map((f,i) => {
+        if (f.type === 'textarea') {
+          return `<div><label class="text-xs text-white/50">${f.label}</label><textarea id="field_${i}" placeholder="${f.placeholder}" rows="3" class="w-full mt-1 p-3 bg-black border border-white/10 rounded-xl text-sm"></textarea></div>`;
+        } else {
+          return `<div><label class="text-xs text-white/50">${f.label}</label><input id="field_${i}" type="${f.type}" placeholder="${f.placeholder}" class="w-full mt-1 p-3 bg-black border border-white/10 rounded-xl text-sm"></div>`;
+        }
+      }).join('');
+    } else {
+      document.getElementById('formContainer').innerHTML = '<p class="text-white/40 text-sm">Form is disabled from admin panel. Enable it to show contact form.</p>';
+    }
+  }
+
+  function submitForm(){
+    const data = getData();
+    let msg = 'New Contact Form Submission:\n';
+    (data.contact.fields || []).forEach((f,i)=>{
+      const val = document.getElementById('field_'+i).value;
+      msg += `${f.label}: ${val}\n`;
+    });
+    alert(msg + '\n\n(Abhi demo hai, isko tum EmailJS ya WhatsApp API se connect kar sakte ho)');
+  }
+</script>
+</body>
+</html>

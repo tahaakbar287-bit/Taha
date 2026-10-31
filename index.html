@@ -1,151 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taha Akbar - I BUILD CUSTOM SOFTWARE</title>
+  <title>Taha Akbar — I Build Custom Software</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
-    body{background:#05080f;color:white;font-family: sans-serif;overflow-x:hidden}
-    .glow-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.12);
-      backdrop-filter:blur(24px);
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800&display=swap');
+    body { font-family: 'Geist', sans-serif; background: #05080f; color: white; }
+    .glow-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(24px);
     }
-    .story-ring{background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); padding:2px;}
+    .neon-ring { box-shadow: 0 0 0 1px rgba(10,132,255,0.3), 0 0 0 8px rgba(10,132,255,0.08), 0 0 80px rgba(10,132,255,0.4); }
+    .orb { position: absolute; border-radius: 9999px; filter: blur(70px); opacity: 0.5; }
+    .modal { backdrop-filter: blur(30px); background: rgba(5,8,15,0.95); }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="flex flex-col min-h-screen relative">
 
-  <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto w-full">
-    <div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px]">TA</div><b class="tracking-widest text-xs">TAHA AKBAR.DEV</b></div>
-    <div class="flex gap-5 text-[10px] tracking-widest text-white/40">
-      <a href="index.html" class="text-white border-b border-[#0A84FF]">HOME</a>
-      <a href="about.html">ABOUT</a><a href="projects.html">PROJECTS</a><a href="blog.html">BLOG</a><a href="contact.html">CONTACT</a>
+  <div class="orb w-[400px] h-[400px] bg-[#0A84FF]/30 -top-20 -left-20"></div>
+  <div class="orb w-[600px] h-[600px] bg-cyan-400/20 bottom-0 right-0"></div>
+
+  <nav class="relative z-10 flex justify-between items-center px-6 md:px-10 py-6 max-w-[1400px] mx-auto w-full">
+    <div class="tracking-[0.3em] text-xs text-white/60">TAHA AKBAR</div>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
+      <a href="index.html" class="text-white border-b border-[#0A84FF]">Home</a>
+      <a href="projects.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Stack</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="px-6 py-2.5 rounded-full bg-[#0A84FF] font-bold text-white">Hire Me</a>
     </div>
   </nav>
 
-  <div class="flex-1 max-w-7xl mx-auto p-6 w-full">
-    <div class="grid md:grid-cols-3 gap-6">
-      <!-- BIG CARD - EXACT LIKE VIDEO -->
-      <div class="md:col-span-2 glow-card p-8 md:p-10 rounded-[32px] relative overflow-hidden">
-        <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#0A84FF]/20 rounded-full blur-[80px]"></div>
-        <div class="relative">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] tracking-widest"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> AVAILABLE FOR WORK</div>
-          <h1 id="homeTitle" class="text-4xl md:text-6xl font-black leading-[0.9] mt-6">I BUILD<br>CUSTOM<br>SOFTWARE</h1>
-          <p id="homeBacklinks" class="text-white/40 mt-6 max-w-lg text-xs leading-relaxed">I don't just build websites, I rank them. High-authority backlinks, guest posts, and technical SEO that gets you to Google's first page. 100+ sites ranked.</p>
-          <div class="mt-8 flex gap-8">
-            <div><div id="stat1" class="text-xl font-bold">20+</div><div class="text-[9px] text-white/30">PROJECTS</div></div>
-            <div><div id="stat2" class="text-xl font-bold">100+</div><div class="text-[9px] text-white/30">CLIENTS</div></div>
-            <div><div id="stat3" class="text-xl font-bold">100%</div><div class="text-[9px] text-white/30">SATISFACTION</div></div>
-          </div>
-          <div class="mt-8 flex gap-3">
-            <a id="waHero" href="#" class="px-5 py-2.5 rounded-full bg-white text-black font-bold text-[11px]"><i class="fa-brands fa-whatsapp mr-1"></i> WHATSAPP</a>
-            <a id="liHero" href="#" class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-[11px]">LINKEDIN</a>
-          </div>
+  <main class="flex-1 relative z-10">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 grid md:grid-cols-[1.2fr_0.8fr] gap-10 pt-6">
+      <div>
+        <h1 id="homeTitle" class="text-[44px] md:text-[84px] font-extrabold leading-[0.9]">I BUILD<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#6A5CFF] via-[#0A84FF] to-cyan-300">CUSTOM SOFTWARE</span></h1>
+        <p class="text-white/50 text-[15px] mt-6 max-w-[520px]">Scalable web apps, APIs, and cloud solutions crafted with precision.</p>
+        <div class="mt-8 glow-card rounded-2xl p-5 border-l-4 border-l-[#0A84FF]">
+          <h3 class="font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-link text-[#0A84FF]"></i> SEO & Backlinks Expert</h3>
+          <p id="homeBacklinks" class="text-white/50 text-xs mt-2 leading-relaxed">Loading...</p>
         </div>
       </div>
-
-      <!-- RIGHT 2 CARDS - EXACT LIKE VIDEO -->
-      <div class="space-y-6">
-        <div class="glow-card p-5 rounded-[24px] flex items-center gap-4">
-          <img id="instaProfilePic" src="https://i.pravatar.cc/100" class="w-12 h-12 rounded-full object-cover">
-          <div>
-            <div id="instaName" class="font-bold text-sm">Taha Akbar</div>
-            <div id="instaUsername" class="text-[11px] text-white/40">@tahaakbar.dev</div>
-            <div id="instaBio" class="text-[10px] text-white/40 mt-1">Full Stack Developer</div>
-          </div>
+      <div onclick="openProfile()" class="glow-card rounded-[24px] p-8 flex flex-col items-center h-fit cursor-pointer hover:border-[#0A84FF]/50 transition group">
+        <div class="px-4 py-1.5 rounded-full border border-white/20 text-[12px] text-white/70">Click to view profile →</div>
+        <div class="relative mt-8">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-[#0A84FF] to-cyan-400 blur-[1px]"></div>
+          <div class="absolute inset-[3px] rounded-full bg-[#05080f]"></div>
+          <img id="homeProfilePic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" class="relative w-[280px] h-[280px] rounded-full object-cover neon-ring">
         </div>
-        <div class="glow-card p-5 rounded-[24px]">
-          <div class="text-[9px] tracking-widest text-white/30">CURRENT STATUS</div>
-          <div class="mt-3 flex items-center gap-2 text-sm"><div class="w-2 h-2 bg-green-400 rounded-full"></div> Building Premium Products</div>
-          <div id="contactLocationText" class="mt-3 text-[11px] text-white/30">Pakistan / Bishkek Remote</div>
+        <div class="mt-6 text-center">
+          <h3 id="profileNameText" class="font-bold">Taha Akbar</h3>
+          <p class="text-white/50 text-xs mt-1">Full Stack Developer • 4+ Years</p>
         </div>
       </div>
     </div>
 
-    <!-- STORIES - SEPARATE SECTION -->
-    <div class="mt-16">
-      <h2 class="font-bold tracking-widest text-[11px] text-white/30">STORIES</h2>
-      <div id="storyContainer" class="mt-5 flex gap-6 overflow-auto pb-2"></div>
-    </div>
-
-    <!-- GRID - SEPARATE SECTION -->
-    <div class="mt-12">
-      <h2 class="font-bold tracking-widest text-[11px] text-white/30">SELECTED WORK — INSTAGRAM GRID</h2>
-      <div id="instaGrid" class="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-    </div>
-  </div>
-
-  <!-- FOOTER - AB FIXED HAI -->
-  <footer class="mt-20 border-t border-white/5">
-    <div class="max-w-7xl mx-auto p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-[10px] text-white/20 tracking-widest">© 2026 TAHA AKBAR.DEV — ALL RIGHTS RESERVED</div>
-      <div class="flex gap-3">
-        <a id="footerWa" href="#" class="w-9 h-9 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-xs hover:bg-green-500/20"><i class="fa-brands fa-whatsapp"></i></a>
-        <a id="footerLi" href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a id="footerEmail" href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs"><i class="fa-solid fa-envelope"></i></a>
-        <a id="footerInsta" href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs"><i class="fa-brands fa-instagram"></i></a>
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 mt-20">
+      <div class="flex justify-between items-center">
+        <h2 class="text-3xl font-bold">Featured Projects</h2>
+        <a href="projects.html" class="text-[#0A84FF] text-sm">View All →</a>
       </div>
+      <div id="homeProjects" class="mt-6 grid md:grid-cols-3 gap-4"></div>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="glow-card rounded-[20px] p-6 text-center"><b id="stat1" class="text-3xl">20+</b><p class="text-white/40 text-xs mt-1">Projects</p></div>
+      <div class="glow-card rounded-[20px] p-6 text-center"><b id="stat2" class="text-3xl">100+</b><p class="text-white/40 text-xs mt-1">Backlinks</p></div>
+      <div class="glow-card rounded-[20px] p-6 text-center"><b id="stat3" class="text-3xl">100%</b><p class="text-white/40 text-xs mt-1">Satisfaction</p></div>
+    </div>
+  </main>
+
+  <!-- FOOTER - SIRF SOCIAL LINKS -->
+  <footer class="relative z-10 border-t border-white/10 mt-20 bg-black/60 backdrop-blur">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div id="footerSocials" class="flex gap-3"></div>
+      <p class="text-[11px] text-white/30">© 2026 Taha Akbar — Built with 3D, Tailwind & ❤️</p>
     </div>
   </footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
-    const firebaseConfig = {
-      apiKey: "AIzaSyCI7uvdzQPGbmgdf5gz1UEzrELfMbuGkKM",
-      authDomain: "taha-portfolio-82701.firebaseapp.com",
-      databaseURL: "https://taha-portfolio-82701-default-rtdb.firebaseio.com",
-      projectId: "taha-portfolio-82701",
-      storageBucket: "taha-portfolio-82701.firebasestorage.app",
-      messagingSenderId: "41736884999",
-      appId: "1:41736884999:web:8c543d482366d18ac9cbaf"
-    };
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    onValue(ref(db,'portfolioData'), snap=>{
-      const data = snap.val(); if(!data) return;
-      if(data.home){
-        document.getElementById('homeTitle').innerText = data.home.title;
-        document.getElementById('homeBacklinks').innerText = data.home.backlinks;
-        document.getElementById('stat1').innerText = data.home.stats[0];
-        document.getElementById('stat2').innerText = data.home.stats[1];
-        document.getElementById('stat3').innerText = data.home.stats[2];
-      }
-      if(data.insta){
-        document.getElementById('instaName').innerText = data.insta.name;
-        document.getElementById('instaUsername').innerText = '@'+data.insta.username;
-        document.getElementById('instaBio').innerText = data.insta.bio;
-        if(data.insta.profilePic) document.getElementById('instaProfilePic').src = data.insta.profilePic;
-        if(data.insta.stories){
-          document.getElementById('storyContainer').innerHTML = data.insta.stories.map(s=>`
-            <a href="${s.link||'#'}" class="flex flex-col items-center gap-2 min-w-[70px]">
-              <div class="story-ring rounded-full"><div class="bg-[#05080f] rounded-full p-[3px]"><div class="w-12 h-12 rounded-full overflow-hidden bg-white/5">${s.image?`<img src="${s.image}" class="w-full h-full object-cover">`:`<div class="flex items-center justify-center w-full h-full text-xs">${s.label[0]}</div>`}</div></div></div>
-              <span class="text-[10px] text-white/50">${s.label}</span>
-            </a>`).join('');
-        }
-        if(data.insta.grid){
-          document.getElementById('instaGrid').innerHTML = data.insta.grid.map(p=>`
-            <a href="${p.link||'#'}" class="aspect-square rounded-[20px] overflow-hidden bg-white/5 border border-white/5 relative group">
-              ${p.image?`<img src="${p.image}" class="w-full h-full object-cover">`:`<div class="p-4 text-xs">${p.name}</div>`}
-              <div class="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-3"><div class="text-xs font-bold">${p.name}</div><div class="text-[10px] text-white/50">${p.caption||''}</div></div>
-            </a>`).join('');
-        }
-      }
-      if(data.contact){
-        document.getElementById('contactLocationText').innerText = data.contact.location;
-      }
-      if(data.social){
-        document.getElementById('footerWa').href = 'https://wa.me/'+data.social.whatsapp;
-        document.getElementById('footerLi').href = data.social.linkedin;
-        document.getElementById('footerEmail').href = 'mailto:'+data.social.email;
-        if(document.getElementById('footerInsta')) document.getElementById('footerInsta').href = data.social.instagram||data.contact?.instagram||'#';
-        if(document.getElementById('waHero')) document.getElementById('waHero').href = 'https://wa.me/'+data.social.whatsapp;
-        if(document.getElementById('liHero')) document.getElementById('liHero').href = data.social.linkedin;
-      }
-    });
-  </script>
+  <!-- PROFILE MODAL - INSTA STYLE -->
+  <div id="profileModal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+    <div class="modal min-h-screen w-full p-0 md:p-6 flex justify-center">
+      <div class="bg-[#05080f] w-full max-w-[900px] md:rounded-[24px] md:border md:border-white/10 overflow-hidden">
+        <div class="flex justify-between items-center p-4 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <img id="modalProfilePic" src="" class="w-8 h-8 rounded-full">
+            <b id="modalProfileName" class="text-sm">tahaakbar.dev</b>
+          </div>
+          <button onclick="closeProfile()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"><i class="fa-solid fa-xmark text-xs"></i></button>
+        </div>
+        <div class="p-6 md:p-8 grid grid-cols-[80px_1fr] md:grid-cols-[150px_1fr] gap-6">
+          <img id="modalBigPic" src="" class="w-[80px] md:w-[150px] h-[80px] md:h-[150px] rounded-full object-cover neon-ring">
+          <div>
+            <div class="flex gap-6"><div class="text-center"><b class="block" id="modalProjectsCount">0</b><span class="text-xs text-white/50">Projects</span></div><div class="text-center"><b class="block">4+</b><span class="text-xs text-white/50">Years</span></div></div>
+            <h2 id="modalBioName" class="font-bold mt-4">Taha Akbar</h2>
+            <p id="modalBio" class="text-white/60 text-sm mt-1"></p>
+          </div>
+        </div>
+        <div id="storiesContainer" class="px-6 md:px-8 flex gap-4 overflow-x-auto pb-4"></div>
+        <div id="instaGrid" class="grid grid-cols-3 gap-[2px] bg-white/10"></div>
+      </div>
+    </div>
+  </div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyCI7uvdzQPGbmgdf5gz1UEzrELfMbuGkKM",
+    authDomain: "taha-portfolio-82701.firebaseapp.com",
+    databaseURL: "https://taha-portfolio-82701-default-rtdb.firebaseio.com",
+    projectId: "taha-portfolio-82701",
+    storageBucket: "taha-portfolio-82701.firebasestorage.app",
+    messagingSenderId: "41736884999",
+    appId: "1:41736884999:web:8c543d482366d18ac9cbaf"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  let currentData = null;
+
+  onValue(ref(db,'portfolioData'), snap=>{
+    const d = snap.val();
+    if(!d) return;
+    currentData = d;
+
+    // HOME
+    if(d.home){
+      document.getElementById('homeTitle').innerHTML = d.home.title.replace('CUSTOM SOFTWARE','<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#6A5CFF] via-[#0A84FF] to-cyan-300">CUSTOM SOFTWARE</span>');
+      document.getElementById('homeBacklinks').innerText = d.home.backlinks;
+      document.getElementById('stat1').innerText = d.home.stats[0];
+      document.getElementById('stat2').innerText = d.home.stats[1];
+      document.getElementById('stat3').innerText = d.home.stats[2];
+    }
+    if(d.insta && d.insta.profilePic){
+      document.getElementById('homeProfilePic').src = d.insta.profilePic;
+      document.getElementById('profileNameText').innerText = d.insta.name || 'Taha Akbar';
+    }
+    // PROJECTS
+    if(d.projects){
+      document.getElementById('homeProjects').innerHTML = d.projects.slice(0,3).map(p => `
+        <a href="${p.link || 'projects.html'}" target="_blank" class="glow-card rounded-2xl overflow-hidden hover:border-[#0A84FF]/50 transition">
+          <img src="${p.image || 'https://via.placeholder.com/400x250'}" class="w-full h-48 object-cover">
+          <div class="p-4"><h3 class="font-bold text-sm">${p.name}</h3><p class="text-white/40 text-xs mt-1">${p.type || ''} • ${p.desc || ''}</p></div>
+        </a>
+      `).join('');
+    }
+    // FOOTER SOCIALS
+    if(d.social && d.social.links){
+      document.getElementById('footerSocials').innerHTML = d.social.links.map(s => `
+        <a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0A84FF] flex items-center justify-center transition">
+          <i class="fa-brands ${s.icon} text-xs"></i>
+        </a>
+      `).join('');
+    }
+  });
+
+  window.openProfile = function(){
+    if(!currentData) return;
+    const d = currentData;
+    document.getElementById('modalProfilePic').src = d.insta.profilePic || document.getElementById('homeProfilePic').src;
+    document.getElementById('modalBigPic').src = d.insta.profilePic || document.getElementById('homeProfilePic').src;
+    document.getElementById('modalProfileName').innerText = d.insta.username || 'tahaakbar.dev';
+    document.getElementById('modalBioName').innerText = d.insta.name || 'Taha Akbar';
+    document.getElementById('modalBio').innerText = d.insta.bio || 'Full Stack Dev | Custom software';
+    document.getElementById('modalProjectsCount').innerText = (d.insta.grid || []).length;
+    document.getElementById('storiesContainer').innerHTML = (d.insta.stories || []).map(s => `
+      <a href="${s.link || '#'}" target="_blank" class="text-center flex-shrink-0">
+        <div class="w-16 h-16 rounded-full p-[2px] bg-gradient-to-br from-[#0A84FF] to-cyan-400">
+          <img src="${s.image || s.icon}" class="w-full h-full rounded-full object-cover bg-black">
+        </div>
+        <p class="text-[11px] mt-1">${s.label}</p>
+      </a>
+    `).join('');
+    document.getElementById('instaGrid').innerHTML = (d.insta.grid || []).map(g => `
+      <a href="${g.link || '#'}" target="_blank" class="aspect-square relative group overflow-hidden">
+        <img src="${g.image}" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center p-2 text-center">
+          <p class="text-xs font-bold">${g.caption || g.name}</p>
+        </div>
+      </a>
+    `).join('');
+    document.getElementById('profileModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  window.closeProfile = function(){
+    document.getElementById('profileModal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stack — Taha Akbar</title>
+  <title>Contact — Taha Akbar</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -15,7 +15,7 @@
 </head>
 <body class="flex flex-col min-h-screen relative">
   <div class="orb w-[400px] h-[400px] bg-[#0A84FF]/30 -top-20 -left-20"></div>
-  <div class="orb w-[500px] h-[500px] bg-cyan-400/10 top-20 right-0"></div>
+  <div class="orb w-[600px] h-[600px] bg-cyan-400/10 bottom-0 right-0"></div>
 
   <nav class="relative z-10 flex justify-between items-center px-6 md:px-10 py-6 max-w-[1400px] mx-auto w-full">
     <div class="tracking-[0.3em] text-xs text-white/60">TAHA AKBAR</div>
@@ -23,24 +23,43 @@
       <a href="index.html">Home</a>
       <a href="projects.html">Work</a>
       <a href="about.html">About</a>
-      <a href="blog.html" class="text-white border-b border-[#0A84FF]">Stack</a>
-      <a href="contact.html">Contact</a>
+      <a href="blog.html">Stack</a>
+      <a href="contact.html" class="text-white border-b border-[#0A84FF]">Contact</a>
       <a href="contact.html" class="px-6 py-2.5 rounded-full bg-[#0A84FF] font-bold text-white">Hire Me</a>
     </div>
   </nav>
 
-  <main class="flex-1 relative z-10 max-w-[1100px] mx-auto px-6 md:px-10 w-full">
-    <div class="pt-10">
-      <h1 class="text-[48px] md:text-[84px] font-extrabold leading-[0.85]">MY<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#6A5CFF] via-[#0A84FF] to-cyan-300">STACK & BLOG</span></h1>
-      <p class="text-white/40 text-sm mt-4 max-w-[500px]">Tools, tutorials, and breakdowns. All posts use image links from Admin — paste any https:// link or base64 data link.</p>
-    </div>
+  <main class="flex-1 relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 w-full pt-10">
+    <div class="grid md:grid-cols-[1fr_1.1fr] gap-8 items-start">
+      <!-- LEFT INFO - FULLY EDITABLE FROM ADMIN -->
+      <div>
+        <h1 id="contactHeading" class="text-[44px] md:text-[72px] font-extrabold leading-[0.9]">Let's<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#6A5CFF] via-[#0A84FF] to-cyan-300">Talk</span></h1>
+        <p id="contactDesc" class="text-white/40 text-sm mt-6 leading-relaxed max-w-[400px]">Loading description from Firebase...</p>
+        
+        <div class="mt-10 space-y-4">
+          <div class="glow-card rounded-2xl p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><i class="fa-solid fa-envelope text-xs"></i></div>
+            <div><div class="text-[10px] text-white/30 tracking-widest">EMAIL</div><a id="contactEmail" class="text-sm font-bold">loading...</a></div>
+          </div>
+          <div class="glow-card rounded-2xl p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center"><i class="fa-brands fa-whatsapp text-green-400"></i></div>
+            <div><div class="text-[10px] text-white/30 tracking-widest">WHATSAPP</div><a id="contactWhatsapp" target="_blank" class="text-sm font-bold text-green-400">Chat on WhatsApp →</a></div>
+          </div>
+          <div class="glow-card rounded-2xl p-4 flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><i class="fa-solid fa-location-dot text-xs"></i></div>
+            <div><div class="text-[10px] text-white/30 tracking-widest">LOCATION</div><span id="contactLocation" class="text-sm font-bold">Loading...</span></div>
+          </div>
+        </div>
 
-    <div id="blogContainer" class="mt-10 grid md:grid-cols-2 gap-6"></div>
+        <div class="mt-8 flex gap-3" id="contactSocials"></div>
+      </div>
 
-    <div id="emptyBlog" class="hidden mt-20 text-center">
-      <div class="glow-card rounded-[24px] p-12 max-w-[500px] mx-auto">
-        <i class="fa-solid fa-newspaper text-4xl text-white/20"></i>
-        <p class="mt-4 text-white/40 text-sm">No blogs yet. Add from Admin Panel with image link.</p>
+      <!-- RIGHT FORM - FORM BUILDER FROM ADMIN -->
+      <div class="glow-card rounded-[24px] p-6 md:p-8">
+        <h2 class="font-bold text-lg">Send a Message</h2>
+        <p class="text-white/30 text-xs mt-1">Form fields are fully editable from Admin — add/remove fields.</p>
+        <div id="dynamicForm" class="mt-6 space-y-4"></div>
+        <div class="mt-8 text-[10px] text-white/20">Form status: <span id="formStatus" class="text-green-400">Active</span> • Data goes to Firebase</div>
       </div>
     </div>
   </main>
@@ -48,7 +67,7 @@
   <footer class="relative z-10 border-t border-white/10 mt-20 bg-black/60 backdrop-blur">
     <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
       <div id="footerSocials" class="flex gap-3"></div>
-      <p class="text-[11px] text-white/30">© 2026 Taha Akbar — Blog live from Firebase</p>
+      <p class="text-[11px] text-white/30">© 2026 Taha Akbar</p>
     </div>
   </footer>
 
@@ -59,30 +78,32 @@
   const app=initializeApp(firebaseConfig);const db=getDatabase(app);
   
   onValue(ref(db,'portfolioData'),snap=>{
-    const d=snap.val(); if(!d) return;
-    const blogs = d.blogs || [];
+    const data=snap.val(); if(!data) return;
+    const c=data.contact; if(!c) return;
     
-    if(blogs.length===0){
-      document.getElementById('emptyBlog').classList.remove('hidden');
-    } else {
-      document.getElementById('emptyBlog').classList.add('hidden');
-      document.getElementById('blogContainer').innerHTML = blogs.map(b=>`
-        <div class="glow-card rounded-[24px] overflow-hidden group hover:border-[#0A84FF]/30 transition">
-          <div class="h-[200px] bg-white/5 overflow-hidden">
-            ${b.mainPic ? `<img src="${b.mainPic}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">` : `<div class="w-full h-full flex items-center justify-center text-white/10"><i class="fa-solid fa-image text-3xl"></i></div>`}
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-2 text-[10px] tracking-widest text-white/30"><i class="fa-solid fa-calendar"></i> BLOG • 2026</div>
-            <h3 class="font-bold text-[18px] mt-3 leading-tight">${b.title}</h3>
-            <p class="text-white/40 text-xs mt-3 line-clamp-3 leading-relaxed">${b.content||''}</p>
-            <div class="mt-4 inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px]">READ MORE →</div>
-          </div>
-        </div>
-      `).join('');
+    document.getElementById('contactHeading').innerText=c.heading || "Let's Talk";
+    document.getElementById('contactDesc').innerText=c.desc || "";
+    document.getElementById('contactEmail').innerText=c.email || "";
+    document.getElementById('contactEmail').href='mailto:'+c.email;
+    document.getElementById('contactWhatsapp').href='https://wa.me/'+c.whatsapp;
+    document.getElementById('contactLocation').innerText=c.location || "";
+    
+    // SOCIALS IN CONTACT
+    if(data.social){
+      document.getElementById('footerSocials').innerHTML = data.social.links.map(s=>`<a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0A84FF] flex items-center justify-center transition"><i class="fa-brands ${s.icon} text-xs"></i></a>`).join('');
+      document.getElementById('contactSocials').innerHTML = data.social.links.map(s=>`<a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10"><i class="fa-brands ${s.icon} text-xs"></i></a>`).join('');
     }
     
-    if(d.social){
-      document.getElementById('footerSocials').innerHTML = d.social.links.map(s=>`<a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0A84FF] flex items-center justify-center transition"><i class="fa-brands ${s.icon} text-xs"></i></a>`).join('');
+    // DYNAMIC FORM BUILDER
+    if(c.fields && c.fields.length>0){
+      document.getElementById('dynamicForm').innerHTML = c.fields.map(f=>{
+        if(f.type==='textarea'){
+          return `<div><label class="text-[11px] tracking-widest text-white/30">${f.label}</label><textarea placeholder="${f.placeholder}" class="w-full mt-2 p-4 bg-black/50 border border-white/10 rounded-xl text-sm focus:border-[#0A84FF]/50 outline-none"></textarea></div>`;
+        } else {
+          return `<div><label class="text-[11px] tracking-widest text-white/30">${f.label}</label><input type="${f.type}" placeholder="${f.placeholder}" class="w-full mt-2 p-4 bg-black/50 border border-white/10 rounded-xl text-sm focus:border-[#0A84FF]/50 outline-none"></div>`;
+        }
+      }).join('') + `<button onclick="alert('Message sent! (Demo - connect to email service)')" class="w-full mt-6 py-4 rounded-full bg-[#0A84FF] font-bold text-sm">Send Message →</button>`;
+      document.getElementById('formStatus').innerText = c.formEnabled ? 'Active' : 'Disabled';
     }
   });
 </script>

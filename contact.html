@@ -89,27 +89,29 @@
     alert(msg + '\n\n(Abhi demo hai, isko tum EmailJS ya WhatsApp API se connect kar sakte ho)');
   }
 </script>
-  <script type="module">
+ <script type="module">
   import { loadData } from './firebase.js';
-  
   loadData((data)=>{
-    if(!data) return;
-    console.log("Firebase data loaded:", data);
-    
-    // Ye IDs tum apni HTML me laga do jahan data show karna hai
-    if(document.getElementById('site-name')) document.getElementById('site-name').innerText = data.name || '';
-    if(document.getElementById('site-bio')) document.getElementById('site-bio').innerText = data.bio || '';
-    if(document.getElementById('about-text')) document.getElementById('about-text').innerText = data.about || '';
-    if(document.getElementById('contact-email')) document.getElementById('contact-email').innerText = data.email || '';
-    if(document.getElementById('contact-phone')) document.getElementById('contact-phone').innerText = data.phone || '';
-    
-    // Projects ke liye
-    if(document.getElementById('projects-list') && data.projects){
-      let html = "";
-      data.projects.forEach(p => {
-        html += `<div><h3>${p.title}</h3><p>${p.desc}</p></div>`;
-      });
-      document.getElementById('projects-list').innerHTML = html;
+    if(!data?.contact) return;
+    const c = data.contact;
+    if(document.getElementById('contactHeading')) document.getElementById('contactHeading').innerText = c.heading;
+    if(document.getElementById('contactDesc')) document.getElementById('contactDesc').innerText = c.desc;
+    if(document.getElementById('contactEmail')) { document.getElementById('contactEmail').innerText = c.email; document.getElementById('contactEmail').href = 'mailto:'+c.email; }
+    if(document.getElementById('contactWhatsapp')) document.getElementById('contactWhatsapp').href = 'https://wa.me/'+c.whatsapp;
+    if(document.getElementById('contactLinkedin')) document.getElementById('contactLinkedin').href = c.linkedin;
+    if(document.getElementById('contactFacebook')) document.getElementById('contactFacebook').href = c.facebook;
+    if(document.getElementById('contactInsta')) document.getElementById('contactInsta').href = c.instagram;
+    if(document.getElementById('contactLocation')) document.getElementById('contactLocation').innerText = c.location;
+
+    // Form Builder
+    if(c.formEnabled && c.fields){
+      const formCon = document.getElementById('dynamicForm');
+      if(formCon){
+        formCon.innerHTML = c.fields.map(f=>{
+          if(f.type==='textarea') return `<div class="mt-3"><label class="text-xs text-white/50">${f.label}</label><textarea placeholder="${f.placeholder}" class="w-full mt-1 p-3 bg-black border border-white/10 rounded-xl text-sm"></textarea></div>`;
+          else return `<div class="mt-3"><label class="text-xs text-white/50">${f.label}</label><input type="${f.type}" placeholder="${f.placeholder}" class="w-full mt-1 p-3 bg-black border border-white/10 rounded-xl text-sm"></div>`;
+        }).join('') + `<button type="button" onclick="alert('Message Sent! (Demo)')" class="mt-6 w-full py-3 rounded-full bg-[#0A84FF] font-bold text-sm">Send Message</button>`;
+      }
     }
   });
 </script>

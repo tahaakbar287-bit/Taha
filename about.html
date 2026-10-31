@@ -7,108 +7,73 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: sans-serif;
-      background: #05080f;
-      color: white;
-    }
-    .glow-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(24px);
-    }
-    .neon-ring {
-      box-shadow: 0 0 0 1px rgba(10,132,255,0.3), 0 0 0 8px rgba(10,132,255,0.08), 0 0 80px rgba(10,132,255,0.4);
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;800&display=swap');
+    body { font-family: 'Geist', sans-serif; background: #05080f; color: white; }
+    .glow-card { background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(24px); }
+    .neon-ring { box-shadow: 0 0 0 1px rgba(10,132,255,0.3), 0 0 0 8px rgba(10,132,255,0.08), 0 0 80px rgba(10,132,255,0.4); }
+    .orb { position: absolute; border-radius: 9999px; filter: blur(70px); opacity: 0.5; }
   </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen relative">
+  <div class="orb w-[400px] h-[400px] bg-[#0A84FF]/30 -top-20 -left-20"></div>
+  <div class="orb w-[600px] h-[600px] bg-cyan-400/20 bottom-0 right-0"></div>
 
-  <nav class="flex justify-between items-center p-6 md:px-10 max-w-6xl mx-auto w-full">
+  <nav class="relative z-10 flex justify-between items-center px-6 md:px-10 py-6 max-w-[1400px] mx-auto w-full">
     <div class="tracking-[0.3em] text-xs text-white/60">TAHA AKBAR</div>
-    <div class="flex gap-6 text-xs text-white/60">
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
       <a href="index.html">Home</a>
       <a href="projects.html">Work</a>
       <a href="about.html" class="text-white border-b border-[#0A84FF]">About</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html">Stack</a>
       <a href="contact.html">Contact</a>
+      <a href="contact.html" class="px-6 py-2.5 rounded-full bg-[#0A84FF] font-bold text-white">Hire Me</a>
     </div>
   </nav>
 
-  <div class="flex-1 max-w-5xl mx-auto px-6 md:px-10 py-10 w-full grid md:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
-
-    <!-- Pic Card -->
-    <div class="glow-card rounded-[28px] p-8 flex flex-col items-center text-center">
-      <img id="aboutPic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" class="w-[200px] h-[200px] rounded-full object-cover neon-ring">
-      <h2 class="text-2xl font-bold mt-6">Taha Akbar</h2>
-      <p class="text-[#0A84FF] text-sm">Full Stack Developer</p>
-      <div class="mt-6 w-full text-left space-y-3 text-xs">
-        <div class="flex justify-between border-b border-white/10 pb-2">
-          <span class="text-white/40">Location</span>
-          <span>Pakistan / Remote</span>
+  <main class="flex-1 relative z-10 max-w-[1100px] mx-auto px-6 md:px-10 w-full pt-10">
+    <div class="grid md:grid-cols-[380px_1fr] gap-10 items-start">
+      <div class="glow-card rounded-[32px] p-8 text-center">
+        <div class="relative w-fit mx-auto">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-[#0A84FF] to-cyan-400 blur-[1px]"></div>
+          <div class="absolute inset-[3px] rounded-full bg-[#05080f]"></div>
+          <img id="aboutPic" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" class="relative w-[220px] h-[220px] rounded-full object-cover neon-ring">
         </div>
-        <div class="flex justify-between border-b border-white/10 pb-2">
-          <span class="text-white/40">Experience</span>
-          <span>4+ Years</span>
+        <h1 class="text-2xl font-bold mt-6">Taha Akbar</h1>
+        <p class="text-white/40 text-xs mt-2">Full Stack Dev • SEO Expert • 4+ Years</p>
+        <div class="mt-6 flex justify-center gap-3" id="aboutSocials"></div>
+      </div>
+      <div>
+        <h1 class="text-[40px] md:text-[64px] font-extrabold leading-[0.9]">Crafting Digital<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#6A5CFF] via-[#0A84FF] to-cyan-300">Experiences</span></h1>
+        <div class="mt-8 space-y-4">
+          <p id="aboutP1" class="glow-card rounded-2xl p-6 text-white/60 text-sm leading-relaxed">Loading...</p>
+          <p id="aboutP2" class="glow-card rounded-2xl p-6 text-white/50 text-sm leading-relaxed"></p>
         </div>
-        <div class="flex justify-between">
-          <span class="text-white/40">Status</span>
-          <span class="text-green-400">Available</span>
+        <div class="mt-8 grid grid-cols-3 gap-4">
+          <div class="glow-card rounded-2xl p-5 text-center"><b class="text-2xl">20+</b><p class="text-white/30 text-[10px] mt-1 tracking-widest">PROJECTS</p></div>
+          <div class="glow-card rounded-2xl p-5 text-center"><b class="text-2xl">4+</b><p class="text-white/30 text-[10px] mt-1 tracking-widest">YEARS</p></div>
+          <div class="glow-card rounded-2xl p-5 text-center"><b class="text-2xl">100%</b><p class="text-white/30 text-[10px] mt-1 tracking-widest">PASSION</p></div>
         </div>
       </div>
     </div>
+  </main>
 
-    <!-- Text Card -->
-    <div class="glow-card rounded-[28px] p-8 md:p-10">
-      <h1 class="text-4xl font-bold">About Me</h1>
-      <p id="aboutP1" class="text-white/60 mt-6 leading-relaxed text-[15px]"></p>
-      <p id="aboutP2" class="text-white/60 mt-4 leading-relaxed text-[15px]"></p>
-
-      <div class="mt-8">
-        <h3 class="font-bold text-sm">What I Do Best</h3>
-        <ul class="mt-3 space-y-2 text-sm text-white/60">
-          <li><i class="fa-solid fa-check text-[#0A84FF] mr-2"></i>Custom Business Software & ERPs</li>
-          <li><i class="fa-solid fa-check text-[#0A84FF] mr-2"></i>3D Premium Websites</li>
-          <li><i class="fa-solid fa-check text-[#0A84FF] mr-2"></i>Backlinks & SEO Expert</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-
-  <footer class="border-t border-white/10 mt-10 bg-black/40">
-    <div class="max-w-6xl mx-auto px-6 py-6 flex justify-center">
+  <footer class="relative z-10 border-t border-white/10 mt-20 bg-black/60 backdrop-blur">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-10 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
       <div id="footerSocials" class="flex gap-3"></div>
+      <p class="text-[11px] text-white/30">© 2026 Taha Akbar</p>
     </div>
   </footer>
 
-<script>
-  function getData() {
-    return JSON.parse(localStorage.getItem('tahaSiteDataV2') || localStorage.getItem('tahaSiteData') || 'null');
-  }
-  const data = getData();
-  if (data) {
-    if (data.about.pic) document.getElementById('aboutPic').src = data.about.pic;
-    document.getElementById('aboutP1').innerText = data.about.p1;
-    document.getElementById('aboutP2').innerText = data.about.p2;
-    const socials = data.social.links || [];
-    document.getElementById('footerSocials').innerHTML = socials.map(s => `
-      <a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-        <i class="fa-brands ${s.icon} text-xs"></i>
-      </a>
-    `).join('');
-  }
-</script>
-
 <script type="module">
-  import { loadData } from './firebase.js';
-  loadData((data)=>{
-    if(!data?.about) return;
-    if(document.getElementById('aboutP1')) document.getElementById('aboutP1').innerText = data.about.p1;
-    if(document.getElementById('aboutP2')) document.getElementById('aboutP2').innerText = data.about.p2;
-    if(document.getElementById('aboutPic') && data.about.pic) document.getElementById('aboutPic').src = data.about.pic;
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+  const firebaseConfig={apiKey:"AIzaSyCI7uvdzQPGbmgdf5gz1UEzrELfMbuGkKM",authDomain:"taha-portfolio-82701.firebaseapp.com",databaseURL:"https://taha-portfolio-82701-default-rtdb.firebaseio.com",projectId:"taha-portfolio-82701",storageBucket:"taha-portfolio-82701.firebasestorage.app",messagingSenderId:"41736884999",appId:"1:41736884999:web:8c543d482366d18ac9cbaf"};
+  const app=initializeApp(firebaseConfig);const db=getDatabase(app);
+  onValue(ref(db,'portfolioData'),snap=>{
+    const d=snap.val(); if(!d) return;
+    if(d.about){ document.getElementById('aboutP1').innerText=d.about.p1; document.getElementById('aboutP2').innerText=d.about.p2; if(d.about.pic) document.getElementById('aboutPic').src=d.about.pic; }
+    if(d.social){ document.getElementById('footerSocials').innerHTML = d.social.links.map(s=>`<a href="${s.url}" target="_blank" class="w-10 h-10 rounded-full bg-white/10 hover:bg-[#0A84FF] flex items-center justify-center"><i class="fa-brands ${s.icon} text-xs"></i></a>`).join(''); document.getElementById('aboutSocials').innerHTML = d.social.links.map(s=>`<a href="${s.url}" target="_blank" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center"><i class="fa-brands ${s.icon} text-xs"></i></a>`).join(''); }
   });
 </script>
-  
 </body>
 </html>
